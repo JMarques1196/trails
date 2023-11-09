@@ -1,1 +1,4 @@
-
+Stack: 
+React
+Typescript
+SCSS
