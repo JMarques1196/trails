@@ -1,4 +1,4 @@
 Stack: 
 React
 Typescript
-SCSS
+
