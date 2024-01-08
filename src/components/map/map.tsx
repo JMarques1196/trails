@@ -1,7 +1,6 @@
 import React from "react";
+import { Position } from "garmin-tcx-parser/src/index";
 
-const Map = () => {
-  return <></>;
-};
+const Map = () => {};
 
 export default Map;
