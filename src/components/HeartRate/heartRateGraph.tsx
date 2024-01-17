@@ -36,7 +36,7 @@ const Map: FC = () => {
          add CartesianGrid Later when time worked on 
          add XAxis datakey 
          */}
-          <XAxis />
+          <XAxis dataKey="placeholder" />
           <YAxis />
           <Tooltip />
           <Legend />
