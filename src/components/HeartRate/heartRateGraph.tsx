@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { db } from "src/firebase";
 
 const Map: FC = () => {
   let data: Array<any> = [];
