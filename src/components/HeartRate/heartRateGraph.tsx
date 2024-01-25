@@ -1,6 +1,6 @@
 import "./heartRateGraph.css";
-import { HeartRateBpm, Time } from "garmin-tcx-parser/src/index";
-import { FC } from "react";
+import { HeartRateBpm, Time, MaximumSpeed } from "garmin-tcx-parser/src/index";
+import { FC, useState, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -11,40 +11,62 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/firebase";
+//import { seedDatabase } from "src/helper/seed";
 
 const Map: FC = () => {
-  let data: Array<any> = [];
-  for (let i = 0; i < Time.length; i++) {
-    data.push({ value: HeartRateBpm[i] });
-  }
+  // seedDatabase(db);
+  const [content, setContent]: any = useState(undefined);
+
+  useEffect(() => {
+    const firestoreData = async () => {
+      await getDocs(collection(db, "run")).then((querySnapshot) => {
+        const newData: any = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setContent(newData);
+      });
+    };
+    firestoreData();
+  }, []);
 
   return (
-    <div className="heart-rate-container">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={400}
-          height={400}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          {/* <CartesianGrid strokeDasharray="3 3" />
+    <>
+      {content && (
+        <div className="heart-rate-container">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              width={400}
+              height={400}
+              data={content[0].heartRate}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              {/* <CartesianGrid strokeDasharray="3 3" />
          add CartesianGrid Later when time worked on 
          add XAxis datakey 
          */}
-          <XAxis dataKey="placeholder" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="value" stroke="#8884d8" dot={false} />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+              <XAxis dataKey="placeholder" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#8884d8"
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { seedDatabase } from "../src/helper/seed";
-
-// Initialize Firebase
+// import { seedDatabase } from "src/helper/seed";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAf8j_Ec1bbwwHMPZ-R0ijpypC05eMlsgc",
@@ -16,7 +14,7 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-// seedDatabase(db);
 
+//seedDatabase(db);
 
 
