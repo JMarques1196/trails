@@ -17,12 +17,17 @@ import { db } from "src/firebase";
 
 const Map: FC = () => {
   // seedDatabase(db);
-  const [content, setContent]: any = useState(undefined);
+
+  interface contentType {
+    heartRate?: [];
+    id: string;
+  }
+  const [content, setContent] = useState<Array<contentType>>();
 
   useEffect(() => {
     const firestoreData = async () => {
       await getDocs(collection(db, "run")).then((querySnapshot) => {
-        const newData: any = querySnapshot.docs.map((doc) => ({
+        const newData = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
         }));
@@ -52,7 +57,7 @@ const Map: FC = () => {
          add CartesianGrid Later when time worked on 
          add XAxis datakey 
          */}
-              <XAxis dataKey="placeholder" />
+              <XAxis dataKey="none" tick={false} />
               <YAxis />
               <Tooltip />
               <Legend />
