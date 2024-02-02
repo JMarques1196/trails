@@ -62,6 +62,7 @@ const Map: FC = () => {
               <Tooltip />
               <Legend />
               <Line
+                name="Heart Rate"
                 type="monotone"
                 dataKey="value"
                 stroke="#8884d8"
