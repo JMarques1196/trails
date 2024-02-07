@@ -6,11 +6,10 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "typeRoots": ["./node_modules/@types", "./types"],
-    "types": [],
+    "types": ["jest", "node"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "target": "es2015",
-
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

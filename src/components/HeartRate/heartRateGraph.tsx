@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "src/firebase";
+import { db } from "src/firebase.js";
 //import { seedDatabase } from "src/helper/seed";
 
 const Map: FC = () => {
