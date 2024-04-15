@@ -6,7 +6,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "typeRoots": ["./node_modules/@types", "./types"],
-    "types": ["jest", "node"],
+    "types": ["jest", "node", "vite/client"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "target": "es2015",

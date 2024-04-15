@@ -1,5 +1,4 @@
-import "./heartRateGraph.css";
-import { HeartRateBpm, Time, MaximumSpeed } from "garmin-tcx-parser/src/index";
+import "./graph.css";
 import { FC, useState, useEffect } from "react";
 import {
   LineChart,
@@ -15,7 +14,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/firebase.js";
 //import { seedDatabase } from "src/helper/seed";
 
-const Map: FC = () => {
+const Graph: FC = () => {
   // seedDatabase(db);
 
   interface contentType {
@@ -76,4 +75,4 @@ const Map: FC = () => {
   );
 };
 
-export default Map;
+export default Graph;

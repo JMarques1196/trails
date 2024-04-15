@@ -1,8 +1,8 @@
 import React from "react";
-import Map from "../components/HeartRate/heartRateGraph";
+import Graph from "../components/Graph/graph";
 
 const Layout = () => {
-  return <Map />;
+  return <Graph />;
 };
 
 export default Layout;
