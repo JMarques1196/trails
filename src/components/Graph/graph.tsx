@@ -12,13 +12,14 @@ import {
 } from "recharts";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/firebase.js";
-import { seedDatabase } from "src/helper/seed";
+//import { seedDatabase } from "src/helper/seed";
 
 const Graph = () => {
-  seedDatabase(db);
+  //seedDatabase(db);
 
   interface contentType {
     heartRate?: [];
+    altitude?: [];
     id: string;
   }
   const [content, setContent] = useState<Array<contentType>>();
@@ -27,10 +28,11 @@ const Graph = () => {
   useEffect(() => {
     const firestoreData = async () => {
       await getDocs(collection(db, "run")).then((querySnapshot) => {
-        const newData = querySnapshot.docs.map((doc) => ({
+        const newData: Array<contentType> = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
         }));
+        console.log(newData);
         setContent(newData);
       });
     };
@@ -45,7 +47,7 @@ const Graph = () => {
             <LineChart
               width={400}
               height={400}
-              data={content[0].heartRate}
+              data={content[0].altitude}
               margin={{
                 top: 5,
                 right: 30,
