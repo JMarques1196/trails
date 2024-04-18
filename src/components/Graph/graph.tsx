@@ -12,10 +12,10 @@ import {
 } from "recharts";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/firebase.js";
-//import { seedDatabase } from "src/helper/seed";
+import { seedDatabase } from "src/helper/seed";
 
-const Graph: FC = () => {
-  // seedDatabase(db);
+const Graph = () => {
+  seedDatabase(db);
 
   interface contentType {
     heartRate?: [];
@@ -23,6 +23,7 @@ const Graph: FC = () => {
   }
   const [content, setContent] = useState<Array<contentType>>();
 
+  // Grab data from Firebase
   useEffect(() => {
     const firestoreData = async () => {
       await getDocs(collection(db, "run")).then((querySnapshot) => {
@@ -35,7 +36,7 @@ const Graph: FC = () => {
     };
     firestoreData();
   }, []);
-
+  //
   return (
     <>
       {content && (

@@ -1,28 +1,33 @@
 import { collection, addDoc } from "firebase/firestore";
 import {
   HeartRateBpm,
+  AltitudeMeters,
+  /*
   MaximumHeartRateBpm,
   AverageHeartRateBpm,
   Position,
-  /* TotalTimeSeconds,
+   TotalTimeSeconds,
   Time,
   DistanceMeters,
-  AltitudeMeters,
   Calories,
   MaximumSpeed,
   */
 } from "garmin-tcx-parser/src/index";
 
-const data = [];
+const hr = [];
+const alt = [];
 
 for (let i = 0; i < HeartRateBpm.length; i++) {
-  data.push({ value: HeartRateBpm[i] });
+  hr.push({ value: HeartRateBpm[i] });
+}
+for (let i = 0; i < AltitudeMeters.length; i++) {
+  alt.push({ value: AltitudeMeters[i] });
 }
 
 export function seedDatabase(db) {
-  console.log(data);
   addDoc(collection(db, "run"), {
-    heartRate: data,
+    heartRate: hr,
+    altitude: alt,
     //  maximumHeartRateBpm: MaximumHeartRateBpm,
     //  averageHeartRateBpm: AverageHeartRateBpm,
     // position: Position,

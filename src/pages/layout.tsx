@@ -1,8 +1,11 @@
-import React from "react";
-import Graph from "../components/Graph/graph";
+import Menu from "../components/Menu/activity-menu";
 
 const Layout = () => {
-  return <Graph />;
+  return (
+    <>
+      <Menu />
+    </>
+  );
 };
 
 export default Layout;
