@@ -14,14 +14,15 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/firebase.js";
 //import { seedDatabase } from "src/helper/seed";
 
-const Graph = () => {
+interface contentType {
+  heartRate?: [];
+  altitude?: [];
+  id: string;
+}
+const Graph = (prop: { name: string }) => {
   //seedDatabase(db);
 
-  interface contentType {
-    heartRate?: [];
-    altitude?: [];
-    id: string;
-  }
+  let aux: [] | undefined = [];
   const [content, setContent] = useState<Array<contentType>>();
 
   // Grab data from Firebase
@@ -38,7 +39,15 @@ const Graph = () => {
     };
     firestoreData();
   }, []);
-  //
+
+  // Metric selection
+  prop.name === "altitude" && content
+    ? (aux = content[0].altitude)
+    : content
+    ? (aux = content[0].heartRate)
+    : null;
+
+  console.log(aux);
   return (
     <>
       {content && (
@@ -47,7 +56,7 @@ const Graph = () => {
             <LineChart
               width={400}
               height={400}
-              data={content[0].altitude}
+              data={aux}
               margin={{
                 top: 5,
                 right: 30,
@@ -64,7 +73,7 @@ const Graph = () => {
               <Tooltip />
               <Legend />
               <Line
-                name="Heart Rate"
+                name={prop.name}
                 type="monotone"
                 dataKey="value"
                 stroke="#8884d8"

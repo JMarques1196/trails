@@ -10,8 +10,9 @@ const Menu = () => {
         // Activity Selector
       }
       <p>Menu</p>
-      <></>
-      <Graph />
+      <button onClick={() => setMetric("altitude")}>altitude</button>
+      <button onClick={() => setMetric("heartRate")}>heart rate</button>
+      <Graph name={metric} />
     </>
   );
 };
