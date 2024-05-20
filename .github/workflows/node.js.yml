@@ -17,6 +17,8 @@ on:
 
 permissions:
   pull-requests: read
+  id-token: write
+  pages: write
 
 jobs:
   main:
@@ -25,7 +27,7 @@ jobs:
     steps:
       - uses: amannn/action-semantic-pull-request@v5
         env:
-          github_token: ${{ secrets.secret_token }}
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
     
   build:
 
@@ -39,7 +41,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4.0.2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -65,12 +67,15 @@ jobs:
           name: production-files
           path: ./dist
           
-      - name: Deploy GitHub Pages site
-        uses: actions/deploy-pages@v4.0.5
+      - name: Configure Pages
+        uses: actions/configure-pages@v5.0.0
+      - name: Deploy  
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # GitHub token
-          github_token: ${{ secrets.secret_token }}
-          # Time in milliseconds after which to timeout and cancel the deployment (default: 10 minutes)
+          github_token: ${{ secrets.SECRET_TOKEN }}
+          publish_dir: ./dist 
+          
+ 
   
                 
                   
