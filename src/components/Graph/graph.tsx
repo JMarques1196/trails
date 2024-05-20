@@ -19,7 +19,7 @@ interface contentType {
   altitude?: [];
   id: string;
 }
-const Graph = (prop: { name: string }) => {
+const Graph = (prop: { name?: string }) => {
   //seedDatabase(db);
 
   let aux: [] | undefined = [];

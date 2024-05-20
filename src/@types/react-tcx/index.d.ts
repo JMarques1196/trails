@@ -1,1 +1,1 @@
-declare module "garmin-tcx-parser/src/index";
+declare module "garmin-tcx-parser";
