@@ -1,5 +1,8 @@
 ## Scope of this project:
 * React + Typescript
-* Use recharts for sports related metrics visualization, gathered from a Garmin File
-* Use leaflet for latitude and longitude visualization
+* Recharts for sports related metrics visualization, gathered from a Garmin File
+* Leaflet for latitude and longitude visualization
 * Unit tests using Jest
+
+## Live link:
+* [Trails](https://jmarques1196.github.io/trails/)
