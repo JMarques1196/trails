@@ -33,7 +33,6 @@ const Graph = (prop: { name?: string }) => {
           ...doc.data(),
           id: doc.id,
         }));
-        console.log(newData);
         setContent(newData);
       });
     };
@@ -47,7 +46,7 @@ const Graph = (prop: { name?: string }) => {
     ? (aux = content[0].heartRate)
     : null;
 
-  console.log(aux);
+  console.log(content);
   return (
     <>
       {content && (
