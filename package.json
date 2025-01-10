@@ -13,7 +13,7 @@
     "@types/react-test-renderer": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "firebase": "^11.1.0",
-    "garmin-tcx-parser": "^1.0.6",
+    "garmin-tcx-parser": "^1.0.8",
     "leaflet": "^1.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,7 +1,8 @@
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, addDoc, setDoc } from "firebase/firestore";
 import {
   HeartRateBpm,
   AltitudeMeters,
+  Date,
   /*
   MaximumHeartRateBpm,
   AverageHeartRateBpm,
@@ -25,7 +26,7 @@ for (let i = 0; i < AltitudeMeters.length; i++) {
 }
 
 export function seedDatabase(db) {
-  addDoc(collection(db, "run"), {
+  setDoc(doc(db, "run", Date), {
     heartRate: hr,
     altitude: alt,
     //  maximumHeartRateBpm: MaximumHeartRateBpm,

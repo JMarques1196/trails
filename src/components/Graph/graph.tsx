@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/firebase.js";
-//import { seedDatabase } from "src/helper/seed";
+import { seedDatabase } from "src/helper/seed";
 
 interface contentType {
   heartRate?: [];
@@ -34,6 +34,7 @@ const Graph = (prop: { name?: string }) => {
           id: doc.id,
         }));
         setContent(newData);
+        console.log(newData);
       });
     };
     firestoreData();
@@ -46,7 +47,7 @@ const Graph = (prop: { name?: string }) => {
     ? (aux = content[0].heartRate)
     : null;
 
-  console.log(content);
+  //console.log(content);
   return (
     <>
       {content && (
