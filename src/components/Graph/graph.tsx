@@ -10,47 +10,29 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "src/firebase.js";
-import { seedDatabase } from "src/helper/seed";
 
-interface contentType {
+interface dataType {
   heartRate?: [];
   altitude?: [];
-  id: string;
+  id?: string;
 }
-const Graph = (prop: { name?: string }) => {
+interface props {
+  name: string;
+  data: dataType;
+}
+const Graph = ({ name, data }: props) => {
   //seedDatabase(db);
-
   let aux: [] | undefined = [];
-  const [content, setContent] = useState<Array<contentType>>();
 
-  // Grab data from Firebase
-  useEffect(() => {
-    const firestoreData = async () => {
-      await getDocs(collection(db, "run")).then((querySnapshot) => {
-        const newData: Array<contentType> = querySnapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        setContent(newData);
-        console.log(newData);
-      });
-    };
-    firestoreData();
-  }, []);
-
-  // Metric selection
-  prop.name === "altitude" && content
-    ? (aux = content[0].altitude)
-    : content
-    ? (aux = content[0].heartRate)
+  name === "altitude" && data
+    ? (aux = data.altitude)
+    : data
+    ? (aux = data.heartRate)
     : null;
 
-  //console.log(content);
   return (
     <>
-      {content && (
+      {data && (
         <div className="heart-rate-container">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
@@ -73,7 +55,7 @@ const Graph = (prop: { name?: string }) => {
               <Tooltip />
               <Legend />
               <Line
-                name={prop.name}
+                name={name}
                 type="monotone"
                 dataKey="value"
                 stroke="#8884d8"
