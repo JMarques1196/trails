@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Graph from "../Graph/graph";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, QuerySnapshot } from "firebase/firestore";
 import { db } from "src/firebase.js";
+import { seedDatabase } from "src/helper/seed";
 
 interface contentType {
   heartRate?: [];
@@ -10,11 +11,12 @@ interface contentType {
 }
 
 const Menu = () => {
+  //seedDatabase(db);
   const [metric, setMetric] = useState<string>("");
   const [content, setContent] = useState<Array<contentType>>();
   const [filteredContent, setFilteredContent] = useState<contentType>({});
 
-  // Grab data from Firebase
+  // Grab data from Firebase - Default as a Run Activity when page is loaded.
   useEffect(() => {
     const firestoreData = async () => {
       await getDocs(collection(db, "run")).then((querySnapshot) => {
@@ -28,6 +30,18 @@ const Menu = () => {
     };
     firestoreData();
   }, []);
+
+  // get the correct collection according to the user selection
+  const selectActivity = async (activity: string) => {
+    await getDocs(collection(db, activity)).then((querySnapshot) => {
+      const newData: Array<contentType> = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setContent(newData);
+      setFilteredContent(newData[0]); // Display the first activity when first loading the app. To be removed
+    });
+  };
 
   let dateId: string[] = [];
   // get Date ids for the dropdown
@@ -51,6 +65,10 @@ const Menu = () => {
         // Activity Selector
       }
       <p>Menu</p>
+      <button onClick={() => selectActivity("run")}>Run</button>
+      <button onClick={() => selectActivity("mountain-biking")}>
+        Mountain Biking
+      </button>
       <label htmlFor="dates">Choose a date</label>
       <select name="dates" id="dates">
         {dateId.map((date) => (
