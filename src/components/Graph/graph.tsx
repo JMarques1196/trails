@@ -21,7 +21,6 @@ interface props {
   data: dataType;
 }
 const Graph = ({ name, data }: props) => {
-  //seedDatabase(db);
   let aux: [] | undefined = [];
 
   name === "altitude" && data

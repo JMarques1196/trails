@@ -26,7 +26,7 @@ for (let i = 0; i < AltitudeMeters.length; i++) {
 }
 
 export function seedDatabase(db) {
-  setDoc(doc(db, "run", Date), {
+  setDoc(doc(db, "mountain-biking", Date), {
     heartRate: hr,
     altitude: alt,
     //  maximumHeartRateBpm: MaximumHeartRateBpm,
