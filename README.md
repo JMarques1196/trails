@@ -2,7 +2,7 @@
 * React + Typescript
 * Recharts for sports related metrics visualization, gathered from a Garmin File
 * Leaflet for latitude and longitude visualization
-* Unit tests using Jest
+* Unit tests using Vitest
 
 ## Live link:
 * [Trails](https://jmarques1196.github.io/trails/)
