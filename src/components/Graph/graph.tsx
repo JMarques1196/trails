@@ -1,5 +1,4 @@
 import "./graph.css";
-import { FC, useState, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -12,8 +11,8 @@ import {
 } from "recharts";
 
 interface dataType {
-  heartRate?: [];
-  altitude?: [];
+  heartRate?: number[];
+  altitude?: number[];
   id?: string;
 }
 interface props {
@@ -21,7 +20,7 @@ interface props {
   data: dataType;
 }
 const Graph = ({ name, data }: props) => {
-  let aux: [] | undefined = [];
+  let aux: number[] | undefined = [];
 
   name === "altitude" && data
     ? (aux = data.altitude)
