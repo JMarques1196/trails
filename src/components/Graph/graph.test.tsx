@@ -20,8 +20,9 @@ global.ResizeObserver = vi.fn().mockImplementation(() => {
 });
 
 describe("Graph", () => {
-  it("renders the component", () => {
-    render(<Graph name="altitude" data={testData} />);
-    screen.debug();
-  });
+
+it("Graph renders as expected", () => {
+  render(<Graph name="altitude" data={testData} />);
+  screen.debug();
+});
 });
