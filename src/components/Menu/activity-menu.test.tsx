@@ -67,7 +67,7 @@ describe("Menu", () => {
     );
   });
 
-  it("Menu renders displaying the selection buttons and dropdown", () => {
+  it("Renders the inital state correctly", () => {
     render(<Menu />);
     expect(screen.getByText("Menu")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Run" })).toBeInTheDocument();
