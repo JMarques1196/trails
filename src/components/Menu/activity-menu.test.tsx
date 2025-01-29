@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import React from "react";
 import Menu from "./activity-menu";
@@ -14,16 +14,15 @@ global.ResizeObserver = vi.fn().mockImplementation(() => {
   };
 });
 // Firebase
-vi.mock('firebase/firestore', () => ({
+vi.mock("firebase/firestore", () => ({
   collection: vi.fn(),
   getDocs: vi.fn(),
   QuerySnapshot: vi.fn(),
 }));
 
-vi.mock('src/firebase.js', () => ({
+vi.mock("src/firebase.js", () => ({
   db: vi.fn(),
 }));
-
 
 describe("Menu", () => {
   // Mock Data
@@ -85,5 +84,15 @@ describe("Menu", () => {
     screen.debug();
   });
   // Test Functions
-  // Add mocks for functions
+  it("Dsplays running data on initial render", async () => {
+    render(<Menu />);
+
+    await waitFor(() => {
+      const dateSelect = screen.getByLabelText("Choose a date");
+      expect(dateSelect).toHaveValue("2024-01-01"); // Displays the older activity on first run
+    });
+
+    expect(getDocs).toHaveBeenCalledTimes(1);
+    expect(collection).toHaveBeenCalledWith(expect.anything(), "run");
+  });
 });
