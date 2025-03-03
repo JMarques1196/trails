@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./activity.css";
 import Graph from "../Graph/graph";
 import { collection, getDocs, QuerySnapshot } from "firebase/firestore";
 import { db } from "src/firebase.js";
@@ -64,22 +65,28 @@ const Menu = () => {
       {
         // Activity Selector
       }
-      <p>Menu</p>
-      <button onClick={() => selectActivity("run")}>Run</button>
-      <button onClick={() => selectActivity("mountain-biking")}>
-        Mountain Biking
-      </button>
-      <label htmlFor="dates">Choose a date</label>
-      <select name="dates" id="dates">
-        {dateId.map((date) => (
-          <option value={date} id={date} key={date}>
-            {date}
-          </option>
-        ))}
-      </select>
-      <button onClick={() => setMetric("altitude")}>altitude</button>
-      <button onClick={() => setMetric("heartRate")}>heart rate</button>
-      <Graph name={metric} data={filteredContent} />
+      <menu className="activity-menu">
+        <h1>Menu</h1>
+        <button onClick={() => selectActivity("run")}>Run</button>
+        <button onClick={() => selectActivity("mountain-biking")}>
+          Mountain Biking
+        </button>
+        <label htmlFor="dates">Choose a date</label>
+        <select name="dates" id="dates">
+          {dateId.map((date) => (
+            <option value={date} id={date} key={date}>
+              {date}
+            </option>
+          ))}
+        </select>
+      </menu>
+      <section className="graph">
+        <div className="selection">
+          <button onClick={() => setMetric("altitude")}>altitude</button>
+          <button onClick={() => setMetric("heartRate")}>heart rate</button>
+        </div>
+        <Graph name={metric} data={filteredContent} />
+      </section>
     </>
   );
 };

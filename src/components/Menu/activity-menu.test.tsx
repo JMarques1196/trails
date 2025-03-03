@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import React from "react";
 import Menu from "./activity-menu";
@@ -45,13 +45,13 @@ describe("Menu", () => {
     },
   ];
 
-  /*   const mockBikingData: MockData[] = [
+  const mockBikingData: MockData[] = [
     {
-      id: '2024-01-03',
+      id: "2024-01-03",
       heartRate: [75, 80, 85],
       altitude: [200, 250, 300],
     },
-  ]; */
+  ];
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -83,6 +83,7 @@ describe("Menu", () => {
     ).toBeInTheDocument();
     screen.debug();
   });
+
   // Test Functions
   it("Dsplays running data on initial render", async () => {
     render(<Menu />);
@@ -94,5 +95,29 @@ describe("Menu", () => {
 
     expect(getDocs).toHaveBeenCalledTimes(1);
     expect(collection).toHaveBeenCalledWith(expect.anything(), "run");
+  });
+
+  it("switches activity data when clicking mountain biking button", async () => {
+    render(<Menu />);
+
+    // Setup mock for biking data
+    (getDocs as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({
+        docs: mockBikingData.map((data) => ({
+          data: () => ({ heartRate: data.heartRate, altitude: data.altitude }),
+          id: data.id,
+        })),
+      })
+    );
+
+    const bikingButton = screen.getByText("Mountain Biking");
+    fireEvent.click(bikingButton);
+
+    await waitFor(() => {
+      expect(collection).toHaveBeenCalledWith(
+        expect.anything(),
+        "mountain-biking"
+      );
+    });
   });
 });

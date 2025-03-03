@@ -1,0 +1,26 @@
+button{
+    width: 200px;
+}
+
+select{
+    width: 200px;
+}
+.activity-menu{
+    padding-top: 3rem;
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+    display: grid;
+    width: fit-content;
+    justify-items: center;
+  
+}
+
+.graph{
+    padding-left: 3rem;
+    display: flex;
+}
+
+.selection{
+    display: grid;
+    align-self: center;
+}
