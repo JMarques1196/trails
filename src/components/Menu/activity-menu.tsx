@@ -67,18 +67,24 @@ const Menu = () => {
       }
       <menu className="activity-menu">
         <h1>Menu</h1>
-        <button onClick={() => selectActivity("run")}>Run</button>
-        <button onClick={() => selectActivity("mountain-biking")}>
-          Mountain Biking
-        </button>
-        <label htmlFor="dates">Choose a date</label>
-        <select name="dates" id="dates">
-          {dateId.map((date) => (
-            <option value={date} id={date} key={date}>
-              {date}
-            </option>
-          ))}
-        </select>
+        <div className="buttons-container">
+          <button onClick={() => selectActivity("run")}>Run</button>
+          <button onClick={() => selectActivity("mountain-biking")}>
+            Mountain Biking
+          </button>
+        </div>
+        <div>
+          <label className="date" htmlFor="dates">
+            Choose a date:
+          </label>
+          <select name="dates" id="dates">
+            {dateId.map((date) => (
+              <option value={date} id={date} key={date}>
+                {date}
+              </option>
+            ))}
+          </select>
+        </div>
       </menu>
       <section className="graph">
         <div className="selection">
