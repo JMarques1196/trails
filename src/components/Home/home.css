@@ -1,0 +1,18 @@
+.home-container{
+    padding-top: 15%;
+    width: 100%;
+    display: grid;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+.link{
+    text-align: center;
+}
