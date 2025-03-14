@@ -73,7 +73,7 @@ describe("Menu", () => {
     expect(
       screen.getByRole("button", { name: "Mountain Biking" })
     ).toBeInTheDocument();
-    expect(screen.getByLabelText("Choose a date")).toBeInTheDocument();
+    expect(screen.getByLabelText("Choose a date:")).toBeInTheDocument();
     expect(screen.getByRole("combobox")).toBeInTheDocument(); // dropdown
     expect(
       screen.getByRole("button", { name: "altitude" })
@@ -87,9 +87,12 @@ describe("Menu", () => {
   // Test Functions
   it("Dsplays running data on initial render", async () => {
     render(<Menu />);
+    await waitFor(() => {
+      expect(screen.getByText("Menu")).toBeInTheDocument();
+    });
 
     await waitFor(() => {
-      const dateSelect = screen.getByLabelText("Choose a date");
+      const dateSelect = screen.getByLabelText("Choose a date:");
       expect(dateSelect).toHaveValue("2024-01-01"); // Displays the older activity on first run
     });
 
