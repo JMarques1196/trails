@@ -4,7 +4,7 @@ import viteTsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [react(), viteTsconfigPaths()],
-  base: "/",
+  base: "/trails",
   server: {
     open: true,
     port: 3000,
