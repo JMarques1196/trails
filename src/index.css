@@ -42,3 +42,18 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+label, button{
+	font-family:'Big Shoulders Stencil';
+    font-weight: 400;
+}
+
+p {
+	font-family:'Big Shoulders Stencil';
+    font-weight: 400;
+}
+
+h1{
+	font-family:'Big Shoulders Stencil';
+    font-weight: 500;
+}
