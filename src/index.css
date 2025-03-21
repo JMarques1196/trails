@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #ff7700;
 }
 ol, ul {
 	list-style: none;
@@ -40,4 +41,19 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+label, button{
+	font-family:'Big Shoulders Stencil';
+    font-weight: 400;
+}
+
+p {
+	font-family:'Big Shoulders Stencil';
+    font-weight: 400;
+}
+
+h1{
+	font-family:'Big Shoulders Stencil';
+    font-weight: 500;
 }
