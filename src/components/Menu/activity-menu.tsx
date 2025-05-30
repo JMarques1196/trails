@@ -87,6 +87,7 @@ const Menu = () => {
         </div>
       </menu>
       <section className="graph">
+        <h1>Metrics</h1>
         <div className="selection">
           <button onClick={() => setMetric("altitude")}>altitude</button>
           <button onClick={() => setMetric("heartRate")}>heart rate</button>
