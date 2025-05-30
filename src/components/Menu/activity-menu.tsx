@@ -12,7 +12,7 @@ interface contentType {
 }
 
 const Menu = () => {
-  //seedDatabase(db);
+  // seedDatabase(db);
   const [metric, setMetric] = useState<string>("");
   const [content, setContent] = useState<Array<contentType>>();
   const [filteredContent, setFilteredContent] = useState<contentType>({});
@@ -87,6 +87,7 @@ const Menu = () => {
         </div>
       </menu>
       <section className="graph">
+        <h1>Metrics</h1>
         <div className="selection">
           <button onClick={() => setMetric("altitude")}>altitude</button>
           <button onClick={() => setMetric("heartRate")}>heart rate</button>
