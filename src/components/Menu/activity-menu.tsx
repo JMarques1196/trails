@@ -12,7 +12,7 @@ interface contentType {
 }
 
 const Menu = () => {
-  seedDatabase(db);
+  // seedDatabase(db);
   const [metric, setMetric] = useState<string>("");
   const [content, setContent] = useState<Array<contentType>>();
   const [filteredContent, setFilteredContent] = useState<contentType>({});
