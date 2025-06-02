@@ -13,6 +13,62 @@ global.ResizeObserver = vi.fn().mockImplementation(() => {
     unobserve: vi.fn(),
   };
 });
+// Leaflet
+vi.mock("leaflet", () => ({
+  default: {
+    map: vi.fn(() => ({
+      setView: vi.fn().mockReturnThis(),
+      remove: vi.fn(),
+      fitBounds: vi.fn(),
+      addTo: vi.fn().mockReturnThis(),
+    })),
+    tileLayer: vi.fn(() => ({
+      addTo: vi.fn().mockReturnThis(),
+    })),
+    polyline: vi.fn(() => ({
+      addTo: vi.fn().mockReturnThis(),
+      getBounds: vi.fn(() => [[0, 0], [1, 1]]),
+    })),
+    marker: vi.fn(() => ({
+      addTo: vi.fn().mockReturnThis(),
+      bindPopup: vi.fn().mockReturnThis(),
+    })),
+    Icon: {
+      Default: {
+        prototype: {
+          _getIconUrl: vi.fn(),
+        },
+        mergeOptions: vi.fn(),
+      },
+    },
+  },
+  map: vi.fn(() => ({
+    setView: vi.fn().mockReturnThis(),
+    remove: vi.fn(),
+    fitBounds: vi.fn(),
+    addTo: vi.fn().mockReturnThis(),
+  })),
+  tileLayer: vi.fn(() => ({
+    addTo: vi.fn().mockReturnThis(),
+  })),
+  polyline: vi.fn(() => ({
+    addTo: vi.fn().mockReturnThis(),
+    getBounds: vi.fn(() => [[0, 0], [1, 1]]),
+  })),
+  marker: vi.fn(() => ({
+    addTo: vi.fn().mockReturnThis(),
+    bindPopup: vi.fn().mockReturnThis(),
+  })),
+  Icon: {
+    Default: {
+      prototype: {
+        _getIconUrl: vi.fn(),
+      },
+      mergeOptions: vi.fn(),
+    },
+  },
+}));
+
 // Firebase
 vi.mock("firebase/firestore", () => ({
   collection: vi.fn(),
