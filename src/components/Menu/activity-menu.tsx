@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./activity.css";
 import Graph from "../Graph/graph";
+import Map from "../Map/map";
 import { collection, getDocs, QuerySnapshot } from "firebase/firestore";
 import { db } from "src/firebase.js";
 import { seedDatabase } from "src/helper/seed";
@@ -93,6 +94,9 @@ const Menu = () => {
           <button onClick={() => setMetric("heartRate")}>heart rate</button>
         </div>
         <Graph name={metric} data={filteredContent} />
+      </section>
+      <section className="map">
+        <Map />
       </section>
     </>
   );
