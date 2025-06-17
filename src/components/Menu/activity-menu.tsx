@@ -87,17 +87,21 @@ const Menu = () => {
           </select>
         </div>
       </menu>
-      <section className="graph">
-        <h1>Metrics</h1>
-        <div className="selection">
-          <button onClick={() => setMetric("altitude")}>altitude</button>
-          <button onClick={() => setMetric("heartRate")}>heart rate</button>
-        </div>
-        <Graph name={metric} data={filteredContent} />
-      </section>
-      <section className="map">
-        <Map />
-      </section>
+      <div className="graphs-container">
+        <section className="graph">
+          <h1>Metrics</h1>
+          <div className="metric-select-container">
+            <div className="selection">
+              <button onClick={() => setMetric("altitude")}>altitude</button>
+              <button onClick={() => setMetric("heartRate")}>heart rate</button>
+            </div>
+            <Graph name={metric} data={filteredContent} />
+          </div>
+        </section>
+        <section className="map">
+          <Map />
+        </section>
+      </div>
     </>
   );
 };

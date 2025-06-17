@@ -86,7 +86,7 @@ const Map: React.FC = () => {
       <div className="">
         <h1 className="">Track Map</h1>
       </div>
-      <div ref={mapRef} className="" style={{ height: "500px" }} />
+      <div ref={mapRef} className="" style={{ height: "200px" }} />
     </div>
   );
 };
