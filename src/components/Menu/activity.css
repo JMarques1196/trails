@@ -23,13 +23,22 @@ select{
     gap: 0.5rem;
 }
 
+.graphs-container{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.metric-select-container{
+    display: flex;
+}
+
 .date{
     padding-right: 0.5rem;
 }
 
 .graph{
     padding-left: 3rem;
-    display: flex;
 }
 
 .selection{
