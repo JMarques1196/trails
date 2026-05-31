@@ -6,7 +6,7 @@ This project uses data extracted from Garmin Devices using a package I created -
 ## Scope of this project:
 * React + Typescript
 * Vitest
-* GH Actions Ci/CD
+* GH Actions CI/CD
 * Recharts for sports related metrics visualization, gathered from a Garmin File
 * Leaflet for latitude and longitude visualization
 * Unit tests using Vitest
